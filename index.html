@@ -63,61 +63,71 @@ body {
 /* ── NAV ── */
 #top-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(15, 23, 42, 0.96);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 28px; height: 64px;
+  padding: 0 24px; height: 64px; gap: 16px;
 }
 .nav-brand {
-  display: flex; align-items: center; gap: 12px; text-decoration: none;
+  display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;
 }
 .nav-logo-box {
-  width: 38px; height: 38px;
+  width: 36px; height: 36px;
   background: linear-gradient(135deg, var(--gold-accent), var(--gold-dark));
-  border-radius: 10px;
+  border-radius: 9px;
   display: flex; align-items: center; justify-content: center;
-  font-weight: 900; font-size: 16px; color: white;
+  font-weight: 900; font-size: 15px; color: white;
   box-shadow: 0 4px 12px rgba(217, 119, 6, 0.35);
+  flex-shrink: 0;
+}
+.nav-brand-text {
+  display: flex; flex-direction: column; justify-content: center;
 }
 .nav-brand-title {
-  color: white; font-weight: 800; font-size: 15px; letter-spacing: -0.3px;
-  display: flex; align-items: center; gap: 8px;
+  color: white; font-weight: 800; font-size: 14.5px; letter-spacing: -0.3px;
+  display: flex; align-items: center; gap: 8px; white-space: nowrap; line-height: 1.2;
 }
 .nav-brand-badge {
   background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.35);
   color: var(--gold-accent); font-size: 9px; font-weight: 800;
-  padding: 2px 7px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 2px 7px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 .nav-brand-subtitle {
-  color: rgba(255,255,255,0.45); font-size: 11px; font-weight: 400;
+  color: rgba(255,255,255,0.45); font-size: 10.5px; font-weight: 500;
+  white-space: nowrap; line-height: 1.2; margin-top: 2px;
 }
 .nav-links {
-  display: flex; gap: 2px; list-style: none; align-items: center;
+  display: flex; gap: 3px; list-style: none; align-items: center; margin: 0; padding: 0; flex-shrink: 1;
 }
 .nav-links a {
-  color: rgba(255,255,255,0.7); text-decoration: none; font-size: 12.5px;
-  font-weight: 600; padding: 7px 11px; border-radius: 8px;
-  transition: all 0.2s; white-space: nowrap;
+  color: rgba(255,255,255,0.7); text-decoration: none; font-size: 12px;
+  font-weight: 600; padding: 6px 10px; border-radius: 7px;
+  transition: all 0.2s; white-space: nowrap; line-height: 1;
 }
 .nav-links a:hover, .nav-links a.active {
   color: white; background: rgba(255,255,255,0.1);
 }
 .nav-actions {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
 }
 .btn-demo-start {
+  height: 36px;
   background: linear-gradient(135deg, var(--gold-accent), var(--gold-dark));
-  color: white; border: none; font-family: inherit; font-size: 12.5px; font-weight: 800;
-  padding: 8px 16px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+  color: white; border: none; font-family: inherit; font-size: 12px; font-weight: 800;
+  padding: 0 14px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   transition: all 0.2s; box-shadow: 0 4px 14px rgba(217,119,6,0.3);
+  white-space: nowrap; line-height: 1; box-sizing: border-box;
 }
 .btn-demo-start:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(217,119,6,0.45); }
 .btn-nav-outline {
+  height: 36px;
   background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85);
   border: 1px solid rgba(255,255,255,0.15); font-family: inherit;
-  font-size: 12px; font-weight: 600; padding: 7px 12px; border-radius: 8px;
-  cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 600; padding: 0 11px; border-radius: 8px;
+  cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  white-space: nowrap; line-height: 1; box-sizing: border-box;
 }
 .btn-nav-outline:hover { background: rgba(255,255,255,0.12); color: white; }
 
@@ -838,6 +848,13 @@ body.presentation-mode .search-box-wrap {
 }
 
 /* ── RESPONSIVENESS ── */
+@media (max-width: 1260px) {
+  .nav-brand-subtitle { display: none; }
+  .nav-links a { padding: 6px 8px; font-size: 11.5px; }
+}
+@media (max-width: 1040px) {
+  .nav-links { display: none; }
+}
 @media (max-width: 1024px) {
   .arch-three-pillars { grid-template-columns: 1fr; }
   .hero-metric-strip { grid-template-columns: repeat(3, 1fr); }
@@ -847,7 +864,6 @@ body.presentation-mode .search-box-wrap {
   .attendance-layout { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
-  .nav-links { display: none; }
   .hero-metric-strip { grid-template-columns: 1fr 1fr; }
   .s360-header { grid-template-columns: 1fr; text-align: center; }
   .s360-avatar { margin: 0 auto; }
@@ -855,6 +871,11 @@ body.presentation-mode .search-box-wrap {
   .rc-meta-grid { grid-template-columns: 1fr 1fr; }
   .route-timeline { flex-direction: column; gap: 20px; align-items: flex-start; }
   .route-line, .route-line-fill { display: none; }
+}
+@media (max-width: 580px) {
+  .btn-nav-outline { display: none; }
+  .nav-brand-badge { display: none; }
+  #top-nav { padding: 0 16px; }
 }
 
   </style>
@@ -864,9 +885,9 @@ body.presentation-mode .search-box-wrap {
 <nav id="top-nav">
   <a href="#hero" class="nav-brand">
     <div class="nav-logo-box">iC</div>
-    <div>
+    <div class="nav-brand-text">
       <div class="nav-brand-title">
-        iConnect Smart School <span class="nav-brand-badge">Unified Platform</span>
+        iConnect Smart School <span class="nav-brand-badge">Platform</span>
       </div>
       <div class="nav-brand-subtitle">One Platform. Complete School Management.</div>
     </div>
@@ -875,13 +896,11 @@ body.presentation-mode .search-box-wrap {
   <ul class="nav-links">
     <li><a href="#hero" class="active">Overview</a></li>
     <li><a href="#architecture">Architecture</a></li>
-    <li><a href="#modules">Module Map</a></li>
+    <li><a href="#modules">Modules</a></li>
     <li><a href="#workspace">Live Demos</a></li>
-    <li><a href="#ai-layers">AI Intelligence</a></li>
+    <li><a href="#ai-layers">AI Layers</a></li>
     <li><a href="#mobile-apps">Mobile Apps</a></li>
-    <li><a href="#workflow">Student Journey</a></li>
     <li><a href="#roadmap">75-Day Plan</a></li>
-    <li><a href="#value">Value & GTM</a></li>
   </ul>
 
   <div class="nav-actions">
